@@ -54,23 +54,3 @@
 - [ ] **Vendored patches must be re-applied on upgrade.** Eleven local fixes live in `thirdparty/` (two STK heap overflows, STK wall-clock seeding, six DaisySP uninitialised-state bugs, the DaisySP bitcrush gain/sign defect, and the shared `static Fold` in the same file). They are all marked in place -- `grep -rn "nanodsp local patch" thirdparty/` -- and tabulated in `thirdparty/VERSIONS.md`. Run `make asan` after any vendored upgrade.
 
   Note that `make asan` does not cover the uninitialised-read family; see the note under "Local patches" in `thirdparty/VERSIONS.md`. The golden fingerprints are what actually pin those.
-
-## Done
-
-- [x] Tab completion (via argcomplete or shell scripts)
-
-### High impact
-
-- [x] Vocoder (channel vocoder) -- `effects.composed.vocoder()`
-
-- [x] Sidechain compression -- `effects.dynamics.sidechain_compress()`
-
-- [x] Transient shaper -- `effects.dynamics.transient_shape()`
-
-- [x] True peak metering -- `analysis.true_peak_dbtp()`
-
-- [x] Lookahead limiter -- `effects.dynamics.lookahead_limit()`
-
-### Medium impact
-
-- [x] Convolution reverb -- `effects.reverb.convolution_reverb()`, with mix, pre-delay, tail handling and IR normalisation. Reachable from the CLI via the file-operand syntax: `-f convolution_reverb:ir=@church.wav,mix=0.4`
